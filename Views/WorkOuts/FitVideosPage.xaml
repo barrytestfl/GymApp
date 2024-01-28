@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"         
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"  
+             xmlns:local="clr-namespace:GymApp"
+             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+             xmlns:models="clr-namespace:GymApp.Models.Video"             
+             xmlns:viewModels="clr-namespace:GymApp.ViewModels.WorkOuts"
+             x:DataType="viewModels:FitVideosViewModel"
+             x:Class="GymApp.Views.WorkOuts.FitVideosPage"
+             BackgroundColor="WhiteSmoke"
+             Title="Fit Videos">
+
+    <Shell.TitleView>
+        <Grid ColumnDefinitions="30,*,30" Padding="2,0" ColumnSpacing="4">
+            <ImageButton Source="menu.png" Grid.Column="0" Command="{Binding AccountCommand}"  >
+                <ImageButton.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="LawnGreen" />
+                </ImageButton.Behaviors>
+            </ImageButton>
+            <HorizontalStackLayout  Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Spacing="2" Padding="4,2" >
+                <ImageButton Source="gplus.png" VerticalOptions="CenterAndExpand"  WidthRequest="40" >
+                    <ImageButton.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="LawnGreen" />
+                    </ImageButton.Behaviors>
+                </ImageButton>
+                <Label Text="the gym group" VerticalOptions="CenterAndExpand" TextColor="WhiteSmoke" FontSize="18" FontAttributes="Bold"  />
+            </HorizontalStackLayout>
+            <ImageButton Source="notyfication.png" Grid.Column="2" Command="{Binding NotificationCenterCommand}" />
+        </Grid>
+    </Shell.TitleView>
+    <ScrollView  VerticalOptions="FillAndExpand" >
+        <VerticalStackLayout Spacing="10" Padding="5">
+            <Frame  
+                BackgroundColor="{StaticResource Primary}" 
+                Padding="15,15"
+                >
+                <StackLayout Orientation="Horizontal" Spacing="15"  HorizontalOptions="Center" VerticalOptions="Center">
+                    <Image Source="search.png"  HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="30" WidthRequest="30" />
+                    <Label Text="search" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" FontSize="25"/>
+                </StackLayout>
+            </Frame>
+            <Label Text="Fiit"  FontAttributes="Bold" FontSize="28"/>
+            <Label Text=" ddfsfs frweijwe erwepjrwe riijrwee rwpjrw rweporjwrwe rwojrw rwejrw rwiijerw rwjerw rwejrwe rwiir"  LineBreakMode="WordWrap" />
+            <Frame BackgroundColor="{StaticResource Primary}" >
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
+
+                    <Label Text="explore ultimate"  FontAttributes="Bold" FontSize="18" />
+                </StackLayout>
+            </Frame>
+
+            <Grid ColumnDefinitions="*,60,20">
+                <Label Grid.Column="0" Text="categories " FontAttributes="Bold" FontSize="22"/>
+                <Label Grid.Column="1" Text="view all " TextDecorations="Underline"     VerticalOptions="Center" HorizontalOptions="Center"/>
+                <Image Grid.Column="2" Source="arrwright.png" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="20" HeightRequest="20"/>
+            </Grid>
+
+            <CollectionView ItemsSource="{Binding Categories}" Grid.Row="0" BackgroundColor="White"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  ItemsLayout="HorizontalList" >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Category">
+                        <Frame Margin="2" Padding="20,10"  >
+                            <VerticalStackLayout  >
+                                <Image Source="{Binding Img}" HeightRequest="150" WidthRequest="210" />
+                                <Label VerticalOptions="StartAndExpand" HorizontalTextAlignment="Start" Text="{Binding Title}"  FontAttributes="Bold" FontSize="18" TextColor="{StaticResource Primary}" />
+                            </VerticalStackLayout>
+                          
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+
+            <Label Text="recommended" FontAttributes="Bold" FontSize="22" />
+            
+            
+            <CollectionView ItemsSource="{Binding Recommended}" Grid.Row="0" BackgroundColor="White"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  ItemsLayout="HorizontalList" Margin="0,0,0,20" >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Video">
+                        <Frame Margin="2" Padding="20,10"  >
+                            <Grid  RowDefinitions="*,20"  HeightRequest="150" WidthRequest="210">
+                                <Image Source="{Binding Img}"  Aspect="AspectFill" />
+                                <Label LineBreakMode="WordWrap" VerticalOptions="EndAndExpand"
+                                       HorizontalTextAlignment="Start" >
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Title}" FontAttributes="Bold" FontSize="18" />
+                                            <Span Text="  #"   FontAttributes="Bold" FontSize="18"  />
+                                            <Span Text="{Binding PartName}"   FontAttributes="Bold" FontSize="18"  />
+                                            <Span Text="-"   FontAttributes="Bold" FontSize="20"  />
+                                            <Span Text="{Binding VideoType}"   FontAttributes="Bold" FontSize="18"  />
+                                             
+
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Grid.Row="1" Text="{Binding Duration,StringFormat='{0:hh:mm} '}"  
+                                       LineBreakMode="WordWrap" 
+                                       VerticalOptions="Start"
+                                       HorizontalTextAlignment="Start"
+                                       FontSize="16" />
+                            </Grid>
+                        </Frame> 
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

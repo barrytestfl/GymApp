@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:local="clr-namespace:GymApp"
+             xmlns:models="clr-namespace:GymApp.Models.Personal"
+             xmlns:viewModels="clr-namespace:GymApp.ViewModels.Home"
+             x:DataType="viewModels:PersonalTrainersViewModel"
+             x:Class="GymApp.Views.Home.PersonalTrainersPage"
+             Padding="10"
+             Title="Personal Trainers">
+    <ScrollView>
+        <VerticalStackLayout Spacing="10">
+            <Label Text="Personal trainers" TextColor="Blue" FontSize="20" FontAttributes="Bold"/>
+            <Label Text="Meet the personal trainers team below who will help you achive the results and goals you are looking foe! To contact the personal trainer of your choice, simply click on the email addres or give the a call." 
+                    />
+            <Label Text="We look forward to meeting you soon!"
+                   FontSize="18"
+                   FontAttributes="Bold"/>
+            <CollectionView  ItemsSource="{Binding PersonalTrainers}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:PersonalTrainer">
+                        <Frame   HasShadow="True" CornerRadius="30" Padding="0"  Margin="10" >
+                            <Frame.Shadow>
+                                <Shadow 
+                                Brush="Black"
+                                Offset="10,10"
+                                Opacity="0.8" />
+                            </Frame.Shadow>
+                            <StackLayout Orientation="Vertical" Spacing="10">
+                                <Border BackgroundColor="Green"  Margin="0">
+                                    <Label    Margin="10" FontSize="24" VerticalOptions="Center" HorizontalOptions="Center"  >
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span  FontSize="24" Text="{Binding FirstName} " />
+                                                <Span Text=" " />
+                                                <Span  FontSize="24" Text="{Binding LastName}"  />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Border.Stroke >
+                                        <LinearGradientBrush/>
+                                    </Border.Stroke>
+                                </Border>
+                                <Frame HeightRequest="100" BorderColor="Green" WidthRequest="100" VerticalOptions="Center" HorizontalOptions="Center">
+                                    <Image Source="usermember.png" HeightRequest="60"   Aspect="AspectFit"/>
+                                </Frame>
+                                <Label Text="Specialist areas:"
+                                       VerticalTextAlignment="Center"
+                                       VerticalOptions="Center" HorizontalOptions="Center"
+                                       FontSize="22"
+                                       FontAttributes="Bold"
+                                       TextColor="BlueViolet"/>
+                                <Label    Margin="10" FontSize="Body"  >
+                                    <Label.FormattedText>
+                                        <FormattedString>
+
+                                            <Span Text="ejwowf  \\r\\n" />
+                                            <Span Text="ejwowf  \\r\\n" />
+                                            <Span Text="ejwowf  \\r\\n" />
+                                            <Span Text="ejwowf  \\r\\n" />
+                                            <Span Text="ejwowf  \\r\\n" />
+                                            <Span Text="ejwowf  \\r\\n" />
+                                             
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Button Text="more info "
+                                            TextColor="WhiteSmoke"
+                                            BackgroundColor="CornflowerBlue"
+                                            FontAttributes="Bold"
+                                            VerticalOptions="EndAndExpand"
+                                            FontSize="20"
+                                            CornerRadius="20"
+                                        Margin="5"
+                                             Command="{Binding Source={RelativeSource AncestorType={Type viewModels:PersonalTrainersViewModel}}, Path=MoreInfoCommand}"
+                                             CommandParameter="{Binding}"/>
+                            </StackLayout>
+                           
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+         
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

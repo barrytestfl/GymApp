@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="GymApp.Views.Home.HomePage"
+             xmlns:viewModels="clr-namespace:GymApp.ViewModels.Home"
+             x:DataType="viewModels:HomeViewModel"
+             BackgroundColor="WhiteSmoke"
+             Title="Home">
+    <Shell.TitleView>
+        <Grid ColumnDefinitions="30,*,30" Padding="2,0" ColumnSpacing="4">
+            <ImageButton Source="menu.png" Grid.Column="0" Command="{Binding AccountCommand}"  >
+                <ImageButton.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="LawnGreen" />
+                </ImageButton.Behaviors>
+            </ImageButton>
+            <HorizontalStackLayout  Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Spacing="2" Padding="4,2" >
+                <ImageButton Source="gplus.png" VerticalOptions="CenterAndExpand"  WidthRequest="40" >
+                    <ImageButton.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="LawnGreen" />
+                    </ImageButton.Behaviors>
+                </ImageButton>
+                <Label Text="the gym group" VerticalOptions="CenterAndExpand" TextColor="WhiteSmoke" FontSize="18" FontAttributes="Bold"  />
+            </HorizontalStackLayout>
+            <ImageButton Source="notyfication.png" Grid.Column="2" Command="{Binding NotificationCenterCommand}" />
+        </Grid>
+    </Shell.TitleView>
+    <Grid>
+        <ScrollView VerticalOptions="FillAndExpand">
+       
+
+            <VerticalStackLayout >
+                <Grid Margin="0,0,0,15"  BackgroundColor="{StaticResource Primary}" ColumnDefinitions="*,50" HeightRequest="150" Padding="5">
+                    <VerticalStackLayout Spacing="2"   Padding="2,2" >
+                        <Label LineBreakMode="WordWrap">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="welcome back                            " TextColor="White" FontSize="26" FontAttributes="Bold" />
+                                    <Span Text=""  />
+                                    <Span Text="heidar"  TextColor="White" FontSize="26" FontAttributes="Bold" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Text="Ready? Get set.Sweat. Reoeat!"  FontAttributes="Bold"/>
+                        <Label Text="Tap the  icon below to view PIN"/>
+                        <StackLayout Orientation="Horizontal" Spacing="4">
+                            <Image Source="security.png"
+                                     HeightRequest="20"
+                                     WidthRequest="20"/>
+                            <Label Text="**** ****"/>
+                            <ImageButton Source="privacy.png"
+                                     HeightRequest="20"
+                                     WidthRequest="20"
+                                         
+                                 />
+                        </StackLayout>
+                    </VerticalStackLayout>
+                    <Image Source="gplus.png" HorizontalOptions="EndAndExpand"  Grid.Column="1" Aspect="AspectFit" >
+                        <Image.Behaviors>
+                            <toolkit:IconTintColorBehavior TintColor="ForestGreen" />
+                        </Image.Behaviors>
+                    </Image>
+                </Grid>
+                <StackLayout Orientation="Vertical" Spacing="15" BackgroundColor="WhiteSmoke" Padding="10,0" >
+
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10" HeightRequest="180">
+                        <Frame Grid.Column="0">
+                            <VerticalStackLayout Spacing="10" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand">
+                                <Image Source="qrcode.png"  Aspect="AspectFill" HeightRequest="100" WidthRequest="100">
+                                    <Image.Behaviors>
+                                        <toolkit:IconTintColorBehavior TintColor="{StaticResource Primary}" />
+                                    </Image.Behaviors>
+                                </Image>
+                                <Label  Text="gym entry"  
+                                    TextColor="Blue" FontSize="20" FontAttributes="Bold" />
+                            </VerticalStackLayout>
+                        </Frame>
+                        <Frame Grid.Column="1" >
+                            <VerticalStackLayout Spacing="10" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand">
+                                <Grid     VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand">
+                                    <Image Source="circle.png" Aspect="AspectFill" HeightRequest="100" WidthRequest="100" >
+                                        <Image.Behaviors>
+                                            <toolkit:IconTintColorBehavior TintColor="{StaticResource Primary}" />
+                                        </Image.Behaviors>
+                                    </Image>
+                                    <Label  VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="42 " TextColor="Blue" FontSize="30" FontAttributes="Bold" />
+                                                <Span Text="&#10;"  />
+                                                <Span Text="people"  TextColor="Black" FontSize="16"   />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+                                </Grid>
+                                <Label  Text="gym capacity" TextColor="Blue" FontSize="20" FontAttributes="Bold" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </Grid>
+
+                    <Label Text="exclusive news"  FontSize="22" FontAttributes="Bold" />
+                    <Frame Padding="0" HasShadow="True">
+                        <Grid HeightRequest="90">
+                            <Image Source="dotnet_bot.png" Aspect="AspectFill" BackgroundColor="{StaticResource Primary}">
+                                <Image.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="{StaticResource Blue100Accent}" />
+                                </Image.Behaviors>
+                            </Image>
+                            <HorizontalStackLayout Spacing="12">
+                                <Label Text="Explore more"  VerticalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="22" TextColor="White" Padding="15,0"/>
+                                <Image Source="rightarrows.png" >
+                                <Image.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="{StaticResource Primary}" />
+                                    </Image.Behaviors>
+                                </Image>
+                            </HorizontalStackLayout>
+                        </Grid>
+                        <Frame.Shadow>
+                            <Shadow Brush="green"
+                Opacity="1"
+                Radius="10"
+                Offset="20,20" />
+                        </Frame.Shadow>
+                    </Frame>
+
+                    <Frame HasShadow="True" >
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer       Command="{Binding BringFriendCommand}"/>
+                        </Frame.GestureRecognizers>
+                        <Grid ColumnDefinitions="50,*" ColumnSpacing="20" Margin="10,0" >
+                            <Image Source="friends.png" HeightRequest="50" WidthRequest="50">
+                                <Image.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="{StaticResource Primary}" />
+                                </Image.Behaviors>
+                            </Image>
+                            <Label Text="bring a friend" VerticalOptions="CenterAndExpand" Grid.Column="1" FontAttributes="Bold" FontSize="20" TextColor="{StaticResource Primary}" />
+                        </Grid>
+                        <Frame.Shadow>
+                            <Shadow 
+                                Brush="Black"
+                                Offset="10,10"
+                                Opacity="0.8" />
+                        </Frame.Shadow>
+                    </Frame>
+                    <Frame  HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer       Command="{Binding PersonalTrainersCommand}"/>
+                        </Frame.GestureRecognizers>
+                        <Grid ColumnDefinitions="50,*" ColumnSpacing="20" Margin="10,0" >
+                            <Image Source="people.png" HeightRequest="50" WidthRequest="50" >
+                                <Image.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="{StaticResource Primary}" />
+                                </Image.Behaviors>
+                            </Image>
+                            <Label Text="personal trainers" Grid.Column="1" VerticalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="20" TextColor="{StaticResource Primary}" />
+                        </Grid>
+                        <Frame.Shadow>
+                            <Shadow 
+                                Brush="Black"
+                                Offset="10,10"
+                                Opacity="0.8" />
+                        </Frame.Shadow>
+                    </Frame>
+
+                    <Frame  HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer       Command="{Binding GoalCenterCommand }"/>
+                        </Frame.GestureRecognizers>
+                        <Grid ColumnDefinitions="50,*" ColumnSpacing="20" Margin="10,0" >
+                            <Image Source="goals.png" HeightRequest="50" WidthRequest="50" >
+                                <Image.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="{StaticResource Primary}" />
+                                </Image.Behaviors>
+                            </Image>
+                            <Label Text="goals" Grid.Column="1" VerticalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="20" TextColor="{StaticResource Primary}" />
+                        </Grid>
+                        <Frame.Shadow>
+                            <Shadow 
+                                Brush="Black"
+                                Offset="10,10"
+                                Opacity="0.8" />
+                        </Frame.Shadow>
+                    </Frame>
+
+                    <Frame  HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer       Command="{Binding FitQuestCommand }"/>
+                        </Frame.GestureRecognizers>
+                        <Grid ColumnDefinitions="50,*" ColumnSpacing="20" Margin="10,0" >
+                            <Image Source="fitquest.png" HeightRequest="50" WidthRequest="50" >
+                                <Image.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="{StaticResource Primary}" />
+                                </Image.Behaviors>
+                            </Image>
+                            <Label Text="fitquest" Grid.Column="1" VerticalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="20" TextColor="{StaticResource Primary}" />
+                        </Grid>
+                        <Frame.Shadow>
+                            <Shadow 
+                                Brush="Black"
+                                Offset="10,10"
+                                Opacity="0.8" />
+                        </Frame.Shadow>
+                    </Frame>
+
+                    <Frame  HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer       Command="{Binding ChallengesCommand }"/>
+                        </Frame.GestureRecognizers>
+                        <Grid ColumnDefinitions="50,*" ColumnSpacing="20" Margin="10,0" >
+                            <Image Source="star.png" HeightRequest="50" WidthRequest="50" >
+                                <Image.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="{StaticResource Primary}" />
+                                </Image.Behaviors>
+                            </Image>
+                            <Label Text="challenges" Grid.Column="1" VerticalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="20" TextColor="{StaticResource Primary}" />
+                        </Grid>
+                        <Frame.Shadow>
+                            <Shadow 
+                                Brush="Black"
+                                Offset="20,10"
+                                Opacity="0.8" />
+                        </Frame.Shadow>
+                    </Frame>
+
+                    <Frame Margin="0,0,0,20"  HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer       Command="{Binding DealsCommand }"/>
+                        </Frame.GestureRecognizers>
+                        <Grid ColumnDefinitions="50,*" ColumnSpacing="20" Margin="10,0" >
+                            <Image Source="deals.png" HeightRequest="50" WidthRequest="50">
+                                <Image.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="{StaticResource Primary}" />
+                                </Image.Behaviors>
+                            </Image>
+                            <Label Text="deals" Grid.Column="1" VerticalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="20" TextColor="{StaticResource Primary}" />
+                        </Grid>
+                        <Frame.Shadow>
+                            <Shadow 
+                                Brush="Black"
+                                Offset="10,10"
+                                Opacity="0.8" />
+                        </Frame.Shadow>
+                    </Frame>
+                </StackLayout>
+
+
+
+            </VerticalStackLayout>
+         
+        
+
+    </ScrollView>
+        <Frame  HasShadow="True" HeightRequest="70" CornerRadius="40" BorderColor="Transparent" BackgroundColor="{StaticResource Primary}" Margin="15,22" Padding="15,2" HorizontalOptions="EndAndExpand"
+                           VerticalOptions="EndAndExpand" >
+            <Grid ColumnDefinitions="40,*" >
+                <Image Source="qrcode.png" HeightRequest="40" WidthRequest="40" Aspect="AspectFill" >
+                    <Image.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="White" />
+                    </Image.Behaviors>
+                </Image>
+                <Label Text="gym entry" Grid.Column="1" 
+                           VerticalOptions="CenterAndExpand"
+                           FontAttributes="Bold"
+                           FontSize="16" 
+                           TextColor="White"
+                           TextTransform="Lowercase"
+                           IsVisible="false"/>
+            </Grid>
+            <Frame.Shadow>
+                <Shadow 
+                                Brush="Black"
+                                Offset="10,10"
+                                Opacity="0.8" />
+            </Frame.Shadow>
+        </Frame>
+
+    </Grid>
+</ContentPage>

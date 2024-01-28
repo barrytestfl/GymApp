@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             x:Class="GymApp.Views.Accounts.AccountPage"             
+             xmlns:viewModels="clr-namespace:GymApp.ViewModels.Accounts"
+             x:DataType="viewModels:AccountViewModel"
+             BackgroundColor="WhiteSmoke"
+             Title="Account">
+    <VerticalStackLayout Spacing="5">
+        
+            <Frame Margin="5,25,5,5" CornerRadius="50" BackgroundColor="Gray" WidthRequest="90" HeightRequest="90" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+                <Label Text=" H H" FontAttributes="Bold" FontSize="24" TextColor="Blue"  VerticalOptions="Center" HorizontalOptions="CenterAndExpand" />
+            </Frame>
+            <Label Text="hello,heidar" VerticalTextAlignment="Center" FontAttributes="Bold" FontSize="20" Margin="5" />
+
+        <Frame Margin="5" Padding="5"  >
+            <Frame.GestureRecognizers>
+                <ClickGestureRecognizer Command="{Binding ProfileCommand}" Buttons="Primary" />
+            </Frame.GestureRecognizers>           
+            <Grid ColumnDefinitions="55,*,20">
+                <Image Source="editorsname.png" Grid.Column="0" HeightRequest="55" WidthRequest="55" />
+                <Label Grid.Column="1" Text="edit profile"  FontSize="18" FontAttributes="Bold"  />
+            </Grid>
+        </Frame>
+
+        <Frame Margin="5" Padding="5"  >
+            <Frame.GestureRecognizers>
+                <ClickGestureRecognizer Command="{Binding MyGymCommand}" Buttons="Primary" />
+            </Frame.GestureRecognizers>
+            <Grid ColumnDefinitions="55,*,20">
+                <Image Source="gyminterface.png" Grid.Column="0" HeightRequest="55" WidthRequest="55" />
+                <Label Grid.Column="1" Text="my gym"  FontSize="18" FontAttributes="Bold"  />
+            </Grid>
+        </Frame>
+        <Frame Margin="5" Padding="5"  >
+            <Frame.GestureRecognizers>
+                <ClickGestureRecognizer Command="{Binding FAQsCommand}" Buttons="Primary" />
+            </Frame.GestureRecognizers>
+            <Grid ColumnDefinitions="55,*,20">
+                <Image Source="faqchat.png" Grid.Column="0" HeightRequest="55" WidthRequest="55" />
+                <Label Grid.Column="1" Text="FAQs"  FontSize="18" FontAttributes="Bold"  />
+            </Grid>
+        </Frame>
+        <Frame Margin="5" Padding="5"  >
+            <Frame.GestureRecognizers>
+                <ClickGestureRecognizer Command="{Binding SettingsCommand}" Buttons="Primary" />
+            </Frame.GestureRecognizers>
+            <Grid ColumnDefinitions="55,*,20">
+                <Image Source="settings.png" Grid.Column="0" HeightRequest="55" WidthRequest="55" />
+                <Label Grid.Column="1" Text="settings"  FontSize="18" FontAttributes="Bold"  />
+            </Grid>
+        </Frame>
+   
+ 
+        <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand"  HorizontalOptions="Center" Margin="0,125,0,0" Padding="15,0,15,5">
+            <Frame BorderColor="Blue" BackgroundColor="Blue" CornerRadius="40" WidthRequest="200">
+                <Frame.GestureRecognizers>
+                    <ClickGestureRecognizer Command="{Binding LogOutCommand}" Buttons="Primary" />
+                </Frame.GestureRecognizers>
+                <Label Text="sign out" TextColor="White" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+
+            </Frame>
+
+
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>

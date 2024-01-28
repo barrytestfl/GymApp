@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:local="clr-namespace:GymApp"
+             xmlns:viewModels="clr-namespace:GymApp.ViewModels.Home"
+             x:DataType="viewModels:AddFriendViewModel"
+             x:Class="GymApp.Views.Home.AddFriendPage"
+             Title="Add Friend">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Frame HasShadow="True"  CornerRadius="30" Padding="0"  Margin="10">
+                <Frame.Shadow>
+                    <Shadow 
+                                Brush="Black"
+                                Offset="10,10"
+                                Opacity="0.8" />
+                </Frame.Shadow>
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Border BackgroundColor="Green"  Margin="0">
+                    <Image Source="usermember.png" HeightRequest="60"   Aspect="AspectFit"/>
+                    </Border>
+                    <StackLayout Orientation="Vertical" Padding="10" Spacing="10">
+                    <dxe:TextEdit
+                                   Text="{Binding FirstName,Mode=TwoWay}"
+                                   ReturnType="Done"
+                                   LabelText="First Name"
+                                   PlaceholderText="First Name"/>
+                    <dxe:TextEdit
+                                   Text="{Binding LastName,Mode=TwoWay}"
+                                   ReturnType="Done"
+                                   LabelText="Last Name"
+                                   PlaceholderText="Last Name"/>
+                    <dxe:TextEdit
+                                   Text="{Binding Email,Mode=TwoWay}"
+                                   ReturnType="Done"
+                                   LabelText="Email"
+                                   PlaceholderText="Email"/>
+                    <dxe:FormGroupItem Header="Select Attendance Date" >
+                        <dxe:FormListPickerItem     InlineContent="{x:Null}"
+                                            ItemsSource="{Binding AttendanceDateList}"
+                                            PickerTitle="Select Attendance Date"
+                                            SelectedItem="{Binding AttendanceDate, Mode=TwoWay}" 
+                                            Text="{Binding AttendanceDate, Mode=TwoWay}" />
+                    </dxe:FormGroupItem>
+                    <dxe:FormGroupItem Header="Select Attendance Hourse" >
+                        <dxe:FormListPickerItem     InlineContent="{x:Null}"
+                                            ItemsSource="{Binding AttendanceHList}"
+                                            PickerTitle="Select Attendance Hours"
+                                            SelectedItem="{Binding AttendanceHourse, Mode=TwoWay}" 
+                                            Text="{Binding AttendanceHourse, Mode=TwoWay}" />
+                    </dxe:FormGroupItem>
+                    <dxe:FormGroupItem Header="Select Attendance Min" >
+                        <dxe:FormListPickerItem     InlineContent="{x:Null}"
+                                            ItemsSource="{Binding AttendanceMList}"
+                                            PickerTitle="Select Attendance Minute"
+                                            SelectedItem="{Binding AttendanceMinute, Mode=TwoWay}" 
+                                            Text="{Binding AttendanceMinute, Mode=TwoWay}" />
+                    </dxe:FormGroupItem>
+                    <dxe:MultilineEdit
+                                   Text="{Binding Message,Mode=TwoWay}"
+                                   ReturnType="Done"
+                                    BoxMinHeight="55"
+                                    MinLineCount="7" 
+                                   LabelText="Message"
+                                   PlaceholderText="Message"/>
+                    <Label Text=" My Friend Is 16 or over "/>
+                    <dxe:CheckEdit
+                        IsChecked="{Binding Accept}"
+                                    />
+
+
+                    <Label Text="Dose Your Friend Have a Disability?"/>
+                    <dxe:CheckEdit
+                        
+                        IsChecked="{Binding HaveHealthDisability}"
+                                    />
+
+                    <Button Text="INVITE "
+                                            TextColor="WhiteSmoke"
+                                            BackgroundColor="Red"
+                                            FontAttributes="Bold"
+                                            VerticalOptions="EndAndExpand"
+                                            FontSize="26"
+                                            Command="{Binding AddBringFriendCommand}"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+            
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

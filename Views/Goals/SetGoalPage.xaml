@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit" 
+             xmlns:viewModels="clr-namespace:GymApp.ViewModels.Goals"
+             x:DataType="viewModels:SetGoalViewModel"
+             BackgroundColor="WhiteSmoke"
+             x:Class="GymApp.Views.Goals.SetGoalPage"
+             Title="Set Goal ">
+    
+
+        <Grid RowDefinitions="90,*,70,*,70">
+            <Grid>
+                <Image Source="dotnet_bot.png" Aspect="AspectFill" BackgroundColor="{StaticResource Primary}">
+                    <Image.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="{StaticResource Blue100Accent}" />
+                    </Image.Behaviors>
+                </Image>
+                <Label Text="Explore more"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="18" TextColor="White" Padding="15,0"/>
+
+            </Grid>
+            <StackLayout Orientation="Vertical" Grid.Row="1" Padding="5" Spacing="1">
+                <Label Text="set a weekly goal" TextColor="Blue" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <CollectionView ItemsSource="{Binding  Days}"       ItemsLayout="HorizontalList" >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate >
+                        <Frame Margin="2" HeightRequest="70"  WidthRequest="100" >
+
+                            <Label VerticalOptions="Center" HorizontalTextAlignment="Center" Text="{Binding .}" />
+
+
+
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label Text="workouts per week"   FontSize="12"   HorizontalTextAlignment="Center"/>
+          
+            </StackLayout>
+        <StackLayout Grid.Row="2"  Orientation="Vertical"  Padding="15">
+            <Entry Placeholder="Set Name"/>
+        </StackLayout>
+            <StackLayout Orientation="Vertical" Grid.Row="3" Padding="5">
+                <Label Text="set total duration" TextColor="Blue" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <CollectionView ItemsSource="{Binding  Days}"       ItemsLayout="HorizontalList" >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate >
+                        <Frame Margin="2" HeightRequest="70"  WidthRequest="100" >
+                            
+                                <Label VerticalOptions="Center" HorizontalTextAlignment="Center" Text="{Binding .}" />
+                               
+                            
+                          
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Label Text=" week"   FontSize="12"   HorizontalTextAlignment="Center"/>
+
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" Grid.Row="4" Padding="15,0,15,5">
+                 <Frame BorderColor="Blue" BackgroundColor="Blue" CornerRadius="40">
+                    <Label Text="next" TextColor="White" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+
+                </Frame>
+                
+
+            </StackLayout>
+        </Grid>
+            
+    
+</ContentPage>

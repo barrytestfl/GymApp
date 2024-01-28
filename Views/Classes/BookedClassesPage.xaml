@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"    
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"  
+             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+             xmlns:models="clr-namespace:GymApp.Models.Classes"        
+             xmlns:viewModels="clr-namespace:GymApp.ViewModels.Classes"
+             x:DataType="viewModels:BookedClassesViewModel"
+             x:Class="GymApp.Views.Classes.BookedClassesPage"
+             BackgroundColor="WhiteSmoke"
+            >
+
+    <Shell.TitleView>
+        <Grid ColumnDefinitions="30,*,30" Padding="2,0" ColumnSpacing="4">
+            <ImageButton Source="menu.png" Grid.Column="0" Command="{Binding AccountCommand}"  >
+                <ImageButton.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="LawnGreen" />
+                </ImageButton.Behaviors>
+            </ImageButton>
+            <HorizontalStackLayout  Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Spacing="2" Padding="4,2" >
+                <ImageButton Source="gplus.png" VerticalOptions="CenterAndExpand"  WidthRequest="40" >
+                    <ImageButton.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="LawnGreen" />
+                    </ImageButton.Behaviors>
+                </ImageButton>
+                <Label Text="the gym group" VerticalOptions="CenterAndExpand" TextColor="WhiteSmoke" FontSize="18" FontAttributes="Bold"  />
+            </HorizontalStackLayout>
+            <ImageButton Source="notyfication.png" Grid.Column="2" Command="{Binding NotificationCenterCommand}" />
+        </Grid>
+    </Shell.TitleView>
+    <VerticalStackLayout VerticalOptions="FillAndExpand" >
+        <dxcv:DXCollectionView 
+                    Grid.Row="1"     
+                    SelectionMode="None"
+                    ItemsSource="{Binding GymClasses}" 
+                    AllowLiveDataShaping="True"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"      
+                    AllowGroupCollapse="False"
+                    >
+            <dxcv:DXCollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:GymClass">
+                    <Border Padding="10"  Margin="10,2" >
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5"/>
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow 
+                                Brush="Black"
+                                Offset="10,10"
+                                Opacity="0.8" />
+                        </Border.Shadow>
+                        <VerticalStackLayout  >
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="120"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Orientation="Vertical"  Grid.Column="0" Spacing="7" VerticalOptions="StartAndExpand">
+
+                                    <Label LineBreakMode="WordWrap">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding StartTime,StringFormat='{0:hh:mm} . '}" />
+                                                <Span Text="{Binding TotalTime,StringFormat='{0:N0} min'}"  />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+                                    <Label    
+                                    Text="{Binding Title}"
+                                    FontAttributes="Bold"
+                                    FontSize="18"
+                                    LineBreakMode="WordWrap"
+                                    VerticalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    HorizontalOptions="Start" 
+                                    
+                                   />
+                                    <Label    
+                                    Text="{Binding Location}"
+                                    FontAttributes="Bold"
+                                    FontSize="16"
+                                    LineBreakMode="WordWrap"
+                                    VerticalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    HorizontalOptions="Start" 
+                                    
+                                   />
+                                </StackLayout>
+                                <Frame BackgroundColor="ForestGreen" Grid.Column="1" Margin="3" Padding="2"
+                                       VerticalOptions="Start"
+                                       HorizontalOptions="EndAndExpand">
+                                    <Label VerticalTextAlignment="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="booked"   FontSize="16" /> 
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                     
+                                </Frame>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </dxcv:DXCollectionView.ItemTemplate>
+            <!--Specify margins.-->
+            <dxcv:DXCollectionView.Margin>
+                <x:OnIdiom Phone="1,0,0,0" Tablet="71,0,0,0"/>
+            </dxcv:DXCollectionView.Margin>
+
+            <!--Sort items.-->
+            <dxcv:DXCollectionView.SortDescriptions>
+                <dxcv:SortDescription FieldName="StartTime" SortOrder="Descending"/>
+            </dxcv:DXCollectionView.SortDescriptions>
+
+            <!--Group items.-->
+            <dxcv:DXCollectionView.GroupDescription>
+                <dxcv:GroupDescription FieldName="StartTime"  DisplayFormat="ddd MMM d" GroupInterval="Date"/>
+            </dxcv:DXCollectionView.GroupDescription>
+
+        </dxcv:DXCollectionView>
+
+    </VerticalStackLayout>
+</ContentPage>

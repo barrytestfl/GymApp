@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="GymApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:GymApp"
+    xmlns:home="clr-namespace:GymApp.Views.Home"
+    xmlns:classes="clr-namespace:GymApp.Views.Classes"
+    xmlns:activity="clr-namespace:GymApp.Views.Activity"
+    xmlns:workouts="clr-namespace:GymApp.Views.WorkOuts"
+    xmlns:viewModels="clr-namespace:GymApp.ViewModels"
+    xmlns:tabclasses="clr-namespace:GymApp.Views.Tabs"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.TabBarBackgroundColor="White">
+    <Shell.BindingContext>
+        <viewModels:AppShellViewModel />
+    </Shell.BindingContext>
+
+    <TabBar>
+        <ShellContent Title="home" Icon="home.png" ContentTemplate="{DataTemplate home:HomePage}" />
+       
+        <!--<ShellContent Title="classes" Icon="calendar.png" ContentTemplate="{DataTemplate classes:BookedClassesPage}" />
+        <ShellContent Title="activity" Icon="activity.png" ContentTemplate="{DataTemplate activity:MonthlyPage}" />
+        <ShellContent Title="workouts" Icon="workouts.png" ContentTemplate="{DataTemplate workouts:FitVideosPage}" />-->
+        <!--<ShellContent Title="activity" Icon="activity.png" ContentTemplate="{DataTemplate tabclasses:TabClasses}" />-->
+
+        <Tab  Title="classes" Icon="calendar.png"   >
+            <ShellContent   Title="gym classes"  ContentTemplate="{DataTemplate classes:GymClassesPage}" />
+            <ShellContent Title="booked classes"    ContentTemplate="{DataTemplate classes:BookedClassesPage}" />
+        </Tab>
+
+        <Tab  Title="activity" Icon="activity.png"   >
+            <ShellContent   Title="monthly"  ContentTemplate="{DataTemplate activity:MonthlyPage}" />
+            <ShellContent Title="yearly"    ContentTemplate="{DataTemplate activity:YearlyPage}" />
+        </Tab>
+
+        <Tab  Title="workouts" Icon="workouts.png"   >
+            <ShellContent   Title="fiit videos"  ContentTemplate="{DataTemplate workouts:FitVideosPage}" />
+            <ShellContent Title="record a workout"    ContentTemplate="{DataTemplate workouts:RecordWorkOutsPage}" />
+        </Tab>
+    </TabBar>
+     
+
+</Shell>

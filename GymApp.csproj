@@ -1,0 +1,286 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net7.0-android;net7.0-ios;</TargetFrameworks>
+		 
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
+		<OutputType>Exe</OutputType>
+		<RootNamespace>GymApp</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+
+		<!-- Display name -->
+		<ApplicationTitle>GymApp</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.gymapp</ApplicationId>
+		<ApplicationIdGuid>75160b46-6519-4a97-891f-fb76a8435bc9</ApplicationIdGuid>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Fonts\FontAwesomeSolid.otf" />
+	  <None Remove="Resources\Fonts\latoblack.TTF" />
+	  <None Remove="Resources\Fonts\latobold.TTF" />
+	  <None Remove="Resources\Fonts\latoitalic.TTF" />
+	  <None Remove="Resources\Fonts\latoregular.TTF" />
+	  <None Remove="Resources\Images\about.svg" />
+	  <None Remove="Resources\Images\activity.svg" />
+	  <None Remove="Resources\Images\add.svg" />
+	  <None Remove="Resources\Images\add_circle.svg" />
+	  <None Remove="Resources\Images\applay.svg" />
+	  <None Remove="Resources\Images\arrwright.svg" />
+	  <None Remove="Resources\Images\autorenew.svg" />
+	  <None Remove="Resources\Images\bag.svg" />
+	  <None Remove="Resources\Images\calendar.svg" />
+	  <None Remove="Resources\Images\changeuser.svg" />
+	  <None Remove="Resources\Images\check.svg" />
+	  <None Remove="Resources\Images\circle.svg" />
+	  <None Remove="Resources\Images\clothing.svg" />
+	  <None Remove="Resources\Images\contact_details.svg" />
+	  <None Remove="Resources\Images\content_copy.svg" />
+	  <None Remove="Resources\Images\copy.svg" />
+	  <None Remove="Resources\Images\deals.svg" />
+	  <None Remove="Resources\Images\delete.svg" />
+	  <None Remove="Resources\Images\delete_dark.svg" />
+	  <None Remove="Resources\Images\delete_red.svg" />
+	  <None Remove="Resources\Images\documentuser.svg" />
+	  <None Remove="Resources\Images\docx.svg" />
+	  <None Remove="Resources\Images\done.svg" />
+	  <None Remove="Resources\Images\dotnet_bot.svg" />
+	  <None Remove="Resources\Images\edit.svg" />
+	  <None Remove="Resources\Images\editorscalendar.svg" />
+	  <None Remove="Resources\Images\editorscompany.svg" />
+	  <None Remove="Resources\Images\editorsemail.svg" />
+	  <None Remove="Resources\Images\editorslocation.svg" />
+	  <None Remove="Resources\Images\editorsname.svg" />
+	  <None Remove="Resources\Images\editorsphone.svg" />
+	  <None Remove="Resources\Images\edit_dark.svg" />
+	  <None Remove="Resources\Images\envelope.svg" />
+	  <None Remove="Resources\Images\expand_less.svg" />
+	  <None Remove="Resources\Images\export_button_dark.svg" />
+	  <None Remove="Resources\Images\export_button_light.svg" />
+	  <None Remove="Resources\Images\faqchat.svg" />
+	  <None Remove="Resources\Images\feadbackchat.svg" />
+	  <None Remove="Resources\Images\filter.svg" />
+	  <None Remove="Resources\Images\fitness.svg" />
+	  <None Remove="Resources\Images\fitnesskg.svg" />
+	  <None Remove="Resources\Images\fitquest.svg" />
+	  <None Remove="Resources\Images\freazusers.svg" />
+	  <None Remove="Resources\Images\friends.svg" />
+	  <None Remove="Resources\Images\goals.svg" />
+	  <None Remove="Resources\Images\gplus.svg" />
+	  <None Remove="Resources\Images\gym.svg" />
+	  <None Remove="Resources\Images\gyminterface.svg" />
+	  <None Remove="Resources\Images\help.svg" />
+	  <None Remove="Resources\Images\home.svg" />
+	  <None Remove="Resources\Images\info.svg" />
+	  <None Remove="Resources\Images\leftarrows.svg" />
+	  <None Remove="Resources\Images\left_arrow.svg" />
+	  <None Remove="Resources\Images\logout.svg" />
+	  <None Remove="Resources\Images\manageextera.svg" />
+	  <None Remove="Resources\Images\menu.svg" />
+	  <None Remove="Resources\Images\noavatar.svg" />
+	  <None Remove="Resources\Images\notyfication.svg" />
+	  <None Remove="Resources\Images\ok.svg" />
+	  <None Remove="Resources\Images\parking.svg" />
+	  <None Remove="Resources\Images\paymrnt.svg" />
+	  <None Remove="Resources\Images\pdf.svg" />
+	  <None Remove="Resources\Images\pencil.svg" />
+	  <None Remove="Resources\Images\people.svg" />
+	  <None Remove="Resources\Images\person_add.svg" />
+	  <None Remove="Resources\Images\phone.svg" />
+	  <None Remove="Resources\Images\privacy.svg" />
+	  <None Remove="Resources\Images\profile.svg" />
+	  <None Remove="Resources\Images\qrcode.svg" />
+	  <None Remove="Resources\Images\rightarrows.svg" />
+	  <None Remove="Resources\Images\right_arrow.svg" />
+	  <None Remove="Resources\Images\roundpluse.svg" />
+	  <None Remove="Resources\Images\savechanges.svg" />
+	  <None Remove="Resources\Images\savechanges_dark.svg" />
+	  <None Remove="Resources\Images\schedule.svg" />
+	  <None Remove="Resources\Images\schedule_red.svg" />
+	  <None Remove="Resources\Images\search.svg" />
+	  <None Remove="Resources\Images\security.svg" />
+	  <None Remove="Resources\Images\settings.svg" />
+	  <None Remove="Resources\Images\sharemedia.svg" />
+	  <None Remove="Resources\Images\sports.svg" />
+	  <None Remove="Resources\Images\star.svg" />
+	  <None Remove="Resources\Images\tasklist.svg" />
+	  <None Remove="Resources\Images\time.svg" />
+	  <None Remove="Resources\Images\userbusiness.svg" />
+	  <None Remove="Resources\Images\usermember.svg" />
+	  <None Remove="Resources\Images\verticaldots.svg" />
+	  <None Remove="Resources\Images\weight.svg" />
+	  <None Remove="Resources\Images\wifi_off.svg" />
+	  <None Remove="Resources\Images\workouts.svg" />
+	  <None Remove="Resources\Images\world.svg" />
+	  <None Remove="Resources\Images\xlsx.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="6.1.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+		<PackageReference Include="DevExpress.Maui.Charts" Version="23.1.7" />
+		<PackageReference Include="DevExpress.Maui.Scheduler" Version="23.1.7" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="Sharpnado.CollectionView.Maui" Version="3.0.0" />
+		<PackageReference Include="Sharpnado.Tabs.Maui" Version="3.0.1" />
+		<PackageReference Include="ZXing.Net.Maui.Controls" Version="0.4.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Drawables\" />
+	  <Folder Include="Controls\" />
+	  <Folder Include="Services\" />
+	  <Folder Include="ViewModels\Membership\" />
+	  <Folder Include="Views\Membership\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\Accounts\AccountPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Accounts\FAQsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Accounts\MyGymPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Accounts\ProfilePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Accounts\SettingsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Activity\MonthlyPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Activity\YearlyPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Challenges\CurrentPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Challenges\PastPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Classes\BookedClassesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Classes\GymClassesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Deals\AllDealsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Deals\SavedDealsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Fitquest\FitquestPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Goals\CompletedGoalsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Goals\SetGoalPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Goals\YourGoalsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Home\AddFriendPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Home\BringFriendPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Home\HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Home\NewsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Home\PersonalTrainerInfoPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Home\PersonalTrainersPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Notifications\NotificationCenterPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Settings\AboutPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Settings\NotificationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Settings\PrivacyPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Tabs\TabClasses.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\WorkOuts\FitVideosPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\WorkOuts\RecordWorkOutsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0-android'">
+	  <PackageReference Include="DevExpress.Maui.CollectionView">
+	    <Version>23.1.7</Version>
+	  </PackageReference>
+	  <PackageReference Include="DevExpress.Maui.Controls">
+	    <Version>23.1.7</Version>
+	  </PackageReference>
+	  <PackageReference Include="DevExpress.Maui.Editors">
+	    <Version>23.1.7</Version>
+	  </PackageReference>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0-ios'">
+	  <PackageReference Include="DevExpress.Maui.CollectionView">
+	    <Version>23.1.7</Version>
+	  </PackageReference>
+	  <PackageReference Include="DevExpress.Maui.Controls">
+	    <Version>23.1.7</Version>
+	  </PackageReference>
+	  <PackageReference Include="DevExpress.Maui.Editors">
+	    <Version>23.1.7</Version>
+	  </PackageReference>
+	</ItemGroup>
+
+</Project>

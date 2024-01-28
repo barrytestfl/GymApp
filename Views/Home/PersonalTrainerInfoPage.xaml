@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit" 
+             xmlns:local="clr-namespace:GymApp"
+             xmlns:models="clr-namespace:GymApp.Models.Personal"
+             xmlns:viewModels="clr-namespace:GymApp.ViewModels.Home"
+             x:DataType="viewModels:PersonalTrainerInfoViewModel"
+             x:Class="GymApp.Views.Home.PersonalTrainerInfoPage"
+             Padding="10"
+             Title="Personal Trainer Info">
+    <VerticalStackLayout Spacing="15">
+        <Frame   HasShadow="True" CornerRadius="30" Padding="0"  Margin="10" >
+            <Frame.Shadow>
+                <Shadow 
+                                Brush="Black"
+                                Offset="10,10"
+                                Opacity="0.8" />
+            </Frame.Shadow>
+            <StackLayout Orientation="Vertical" Spacing="10">
+                <Border BackgroundColor="Green"  Margin="0">
+                    <Label    Margin="10" FontSize="Body"  >
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding PersonalTrainers.FirstName} " />
+                                <Span Text=" " />
+                                <Span Text="{Binding PersonalTrainers.LastName}"  />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Border.Stroke >
+                        <LinearGradientBrush/>
+                    </Border.Stroke>
+                    
+                    
+                </Border>
+                <Label Text="{Binding PersonalTrainers.Email}"/>
+                <Label Text="{Binding PersonalTrainers.Phone}"/>
+                <Label Text="{Binding PersonalTrainers.Address}"/>
+                <Label Text="{Binding PersonalTrainers.GymLoc}"/>
+
+                <Frame HeightRequest="60" BorderColor="Green" WidthRequest="60" VerticalOptions="Center" HorizontalOptions="Center">
+                    <Image Source="usermember.png" HeightRequest="60"   Aspect="AspectFit"/>
+                </Frame>
+                <Label Text="Specialist areas:"
+                                       FontSize="22"
+                                       FontAttributes="Bold"
+                                       TextColor="BlueViolet"/>
+                <Label    Margin="10" FontSize="Body"  >
+                    <Label.FormattedText>
+                        <FormattedString>
+
+                            <Span Text="ejwowf  \\r\\n" />
+                            <Span Text="ejwowf  \\r\\n" />
+                            <Span Text="ejwowf  \\r\\n" />
+                            <Span Text="ejwowf  \\r\\n" />
+                            <Span Text="ejwowf  \\r\\n" />
+                            <Span Text="ejwowf  \\r\\n" />
+
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label> 
+            </StackLayout>
+
+        </Frame>
+    </VerticalStackLayout>
+</ContentPage>

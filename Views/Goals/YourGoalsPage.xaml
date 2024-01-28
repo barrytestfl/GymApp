@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+              xmlns:viewModels="clr-namespace:GymApp.ViewModels.Goals"
+             x:DataType="viewModels:YourGoalsViewModel"
+             x:Class="GymApp.Views.Goals.YourGoalsPage"
+             BackgroundColor="WhiteSmoke"
+             Padding="15,50,15,15"
+             Title="Your Goals ">
+
+    <Shell.TitleView>
+        <Grid ColumnDefinitions="30,*,30" Padding="2,0" ColumnSpacing="4">
+            <ImageButton Source="menu.png" Grid.Column="0" Command="{Binding AccountCommand}"  >
+                <ImageButton.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="LawnGreen" />
+                </ImageButton.Behaviors>
+            </ImageButton>
+            <HorizontalStackLayout  Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Spacing="2" Padding="4,2" >
+                <ImageButton Source="gplus.png" VerticalOptions="CenterAndExpand"  WidthRequest="40" >
+                    <ImageButton.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="LawnGreen" />
+                    </ImageButton.Behaviors>
+                </ImageButton>
+                <Label Text="the gym group" VerticalOptions="CenterAndExpand" TextColor="WhiteSmoke" FontSize="18" FontAttributes="Bold"  />
+            </HorizontalStackLayout>
+            <ImageButton Source="notyfication.png" Grid.Column="2" Command="{Binding NotificationCenterCommand}" />
+        </Grid>
+    </Shell.TitleView>
+    <Grid >
+        <Border    Margin="0">
+            <VerticalStackLayout  Spacing="15">
+           
+                <Label 
+            Text="set a new goal"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            FontAttributes="Bold"
+                FontSize="26"
+                TextColor="DarkBlue"/>
+            <Label 
+            Text="How do you want to measue your progress?"
+            VerticalOptions="Center" 
+            HorizontalOptions="StartAndExpand" />
+
+            <Label 
+            Text="Select a category:"
+            VerticalOptions="Center" 
+            HorizontalOptions="StartAndExpand" />
+
+                <Frame  HasShadow="True">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer       Command="{Binding SetNewGoalCommand}" CommandParameter="day" />
+                    </Frame.GestureRecognizers>
+                    <Grid ColumnDefinitions="50,*" ColumnSpacing="20" Margin="10,0" >
+                        <Image Source="gyminterface.png" HeightRequest="50" WidthRequest="50" >
+                            <Image.Behaviors>
+                                <toolkit:IconTintColorBehavior TintColor="{StaticResource Primary}" />
+                            </Image.Behaviors>
+                        </Image>
+                        <Label Text="number of workout days" Grid.Column="1" VerticalOptions="CenterAndExpand"   FontSize="16" TextColor="{StaticResource Gray950}" />
+                    </Grid>
+                    <Frame.Shadow>
+                        <Shadow 
+                                Brush="Black"
+                                Offset="10,10"
+                                Opacity="0.8" />
+                    </Frame.Shadow>
+                </Frame>
+                <Frame  HasShadow="True">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer       Command="{Binding SetNewGoalCommand}" CommandParameter="colorie" />
+                    </Frame.GestureRecognizers>
+                    <Grid ColumnDefinitions="50,*" ColumnSpacing="20" Margin="10,0" >
+                        <Image Source="goals.png" HeightRequest="50" WidthRequest="50" >
+                            <Image.Behaviors>
+                                <toolkit:IconTintColorBehavior TintColor="{StaticResource Primary}" />
+                            </Image.Behaviors>
+                        </Image>
+                        <Label Text="colories burned" Grid.Column="1" VerticalOptions="CenterAndExpand"   FontSize="16" TextColor="{StaticResource Gray950}" />
+                    </Grid>
+                    <Frame.Shadow>
+                        <Shadow 
+                                Brush="Black"
+                                Offset="10,10"
+                                Opacity="0.8" />
+                    </Frame.Shadow>
+                </Frame>
+                <Frame  HasShadow="True">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer       Command="{Binding SetNewGoalCommand}" CommandParameter="hours" />
+                    </Frame.GestureRecognizers>
+                    <Grid ColumnDefinitions="50,*" ColumnSpacing="20" Margin="10,0" >
+                        <Image Source="schedule.png" HeightRequest="50" WidthRequest="50" >
+                            <Image.Behaviors>
+                                <toolkit:IconTintColorBehavior TintColor="{StaticResource Primary}" />
+                            </Image.Behaviors>
+                        </Image>
+                        <Label Text="workout duration" Grid.Column="1" VerticalOptions="CenterAndExpand"   FontSize="16" TextColor="{StaticResource Gray950}" />
+                    </Grid>
+                    <Frame.Shadow>
+                        <Shadow 
+                                Brush="Black"
+                                Offset="10,10"
+                                Opacity="0.8" />
+                    </Frame.Shadow>
+                </Frame>
+                <Frame  HasShadow="True">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer       Command="{Binding SetNewGoalCommand}" CommandParameter="distance" />
+                    </Frame.GestureRecognizers>
+                    <Grid ColumnDefinitions="50,*" ColumnSpacing="20" Margin="10,0" >
+                        <Image Source="editorslocation.png" HeightRequest="50" WidthRequest="50" >
+                            <Image.Behaviors>
+                                <toolkit:IconTintColorBehavior TintColor="{StaticResource Primary}" />
+                            </Image.Behaviors>
+                        </Image>
+                        <Label Text="workout duration" Grid.Column="1" VerticalOptions="CenterAndExpand"   FontSize="16" TextColor="{StaticResource Gray950}" />
+                    </Grid>
+                    <Frame.Shadow>
+                        <Shadow 
+                                Brush="Black"
+                                Offset="10,10"
+                                Opacity="0.8" />
+                    </Frame.Shadow>
+                </Frame>
+            </VerticalStackLayout>
+        <Border.Stroke >
+            <LinearGradientBrush/>
+        </Border.Stroke>
+        </Border>
+        
+    </Grid>
+</ContentPage>

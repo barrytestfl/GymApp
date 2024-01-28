@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             x:Class="GymApp.Views.Accounts.ProfilePage"            
+             xmlns:viewModels="clr-namespace:GymApp.ViewModels.Accounts"
+             x:DataType="viewModels:ProfileViewModel"
+             BackgroundColor="WhiteSmoke"
+             Title="Profile">
+    <ScrollView>
+        <VerticalStackLayout Spacing="10" Padding="15">
+            <dxe:TextEdit PlaceholderText="First Name" LabelText="First Name" Text="{Binding FirstName}" />
+            <dxe:TextEdit PlaceholderText="Last Name" LabelText="Last Name" Text="{Binding LastName}" />
+            <dxe:TextEdit PlaceholderText="Email" LabelText="Email" Text="{Binding Email}" />
+            <dxe:TextEdit PlaceholderText="Phone" LabelText="Phone" Text="{Binding Phone}" />
+            <dxe:TextEdit PlaceholderText="Location " LabelText="Location" Text="{Binding GymLoc}" />
+            <dxe:TextEdit PlaceholderText="Address" LabelText="Address" Text="{Binding Address}" />
+
+            <Frame BorderColor="Blue" BackgroundColor="Blue" CornerRadius="40" WidthRequest="200" Margin="5,55,5,5">
+                <Frame.GestureRecognizers>
+                    <ClickGestureRecognizer Command="{Binding SaveCommand}" Buttons="Primary" />
+                </Frame.GestureRecognizers>
+                <Label Text="Save" TextColor="White" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

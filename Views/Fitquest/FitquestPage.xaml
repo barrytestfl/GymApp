@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:tabs="http://sharpnado.com"
+             xmlns:viewModels="clr-namespace:GymApp.ViewModels.Fitquest"
+             x:DataType="viewModels:FitquestViewModel" 
+             BackgroundColor="WhiteSmoke"
+             Padding="15,50,15,15"
+             x:Class="GymApp.Views.Fitquest.FitquestPage"
+             Title="Fitquest">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="MaterialTabStyle" TargetType="tabs:MaterialUnderlinedTabItem">
+                <Setter Property="SelectedTabColor" Value="{StaticResource Primary}" />
+                <Setter Property="SelectedTabColor" Value="{StaticResource Secondary}" />
+                <Setter Property="IconSize" Value="24" />
+                <Setter Property="FontFamily" Value="OpenSansRegular" />
+                <Setter Property="LabelSize" Value="14" />
+                <Setter Property="UnderlineAllTab" Value="True" />
+                <Setter Property="UnselectedLabelColor" Value="{StaticResource Gray200}" />
+            </Style>
+
+            <Style x:Key="BottomTabStyle"
+                 BasedOn="{StaticResource MaterialTabStyle}"
+                 TargetType="tabs:MaterialUnderlinedTabItem">
+                <Setter Property="LabelSize" Value="12" />
+            </Style>
+
+            <Style x:Key="LabelHeader" TargetType="Label">
+                <Setter Property="FontFamily" Value="OpenSansExtraBold" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Margin" Value="16,0" />
+            </Style>
+
+            <Style x:Key="LabelDescription" TargetType="Label">
+                <Setter Property="FontFamily" Value="OpenSansRegular" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="Card" TargetType="Border">
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="Stroke" Value="{StaticResource Gray975}" />
+                <Setter Property="StrokeShape" Value="RoundRectangle 20" />
+                <Setter Property="StrokeThickness" Value="2" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView>
+        <VerticalStackLayout Spacing="10">
+            <Label 
+         Text=" FitQuest is our state-of-the-art fitness monitoring machine.it keeps track of your progress once you've set a goal and compares yor score whith those off the same age group and sex.ther are two options , fitness assessment and Body Composition."
+         VerticalTextAlignment="Start"
+         VerticalOptions="Center" 
+         HorizontalOptions="Center" />
+            <Label 
+                Text="How to use the machine"
+                FontSize="24"
+                FontAttributes="Bold"
+                
+                />
+            <Grid RowDefinitions="60,40,30" ColumnDefinitions="*,*">
+                <Image Grid.Row="0" Grid.Column="0" Source="gyminterface.png" HeightRequest="50" WidthRequest="50" >
+                    <Image.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="LawnGreen" />
+                    </Image.Behaviors>
+                </Image>
+                <Image Grid.Row="0" Grid.Column="1" Source="gyminterface.png" HeightRequest="50" WidthRequest="50" >
+                    <Image.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="Red" />
+                    </Image.Behaviors>
+                </Image>
+                <Label 
+                    Text="Step 1"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    Grid.Row="1" Grid.Column="0" 
+                    HorizontalTextAlignment="Center"
+                    />
+                <Label 
+                    Text="Step 2"
+                    FontSize="24"
+                    FontAttributes="Bold"
+                    Grid.Row="1" Grid.Column="1" 
+                    HorizontalTextAlignment="Center"
+                    />
+                <Label 
+                     Text="Enter your pin"
+                     FontSize="16"
+                     HorizontalTextAlignment="Center"
+                     Grid.Row="2" Grid.Column="0" 
+                     />
+                <Label 
+                     Text="Choose your assessment"
+                     FontSize="16" 
+                     Grid.Row="2" Grid.Column="1" 
+                    HorizontalTextAlignment="Center"
+                     />
+            </Grid>
+            <StackLayout Orientation="Vertical" BackgroundColor="BlanchedAlmond" Margin="0,15">
+                <Label 
+     Text="Once you have used the machine come back here to see your results"
+     FontSize="20"
+     FontAttributes="Bold"
+    
+     />
+            </StackLayout>
+
+
+            <Label 
+     Text="How to get the best out of FitQuest"
+     FontSize="24"
+     FontAttributes="Bold"
+    
+     />
+            <Grid  RowDefinitions="50,*,50">
+
+
+                <tabs:TabHostView x:Name="TabHostBadge"
+                      Grid.Row="0"
+                      Margin="0"
+                      >
+                    <tabs:MaterialUnderlinedTabItem Style="{StaticResource MaterialTabStyle}"
+                                       
+                                       
+                                        SelectedTabColor="DarkSlateBlue"
+                                        UnselectedLabelColor="Gray"
+                                        Label="FitQuest Index">
+
+                    </tabs:MaterialUnderlinedTabItem>
+                    <tabs:MaterialUnderlinedTabItem Style="{StaticResource MaterialTabStyle}" 
+                                        SelectedTabColor="DarkSlateBlue"
+                                        UnselectedLabelColor="Gray"                                        
+                                        Label="Body Fat">
+
+                    </tabs:MaterialUnderlinedTabItem>
+                    <tabs:MaterialUnderlinedTabItem Style="{StaticResource MaterialTabStyle}" 
+                                        SelectedTabColor="DarkSlateBlue"
+                                        UnselectedLabelColor="Gray"                                        
+                                        Label="Muscle gain">
+                    </tabs:MaterialUnderlinedTabItem>
+                    <tabs:MaterialUnderlinedTabItem Style="{StaticResource MaterialTabStyle}" 
+                                        SelectedTabColor="DarkSlateBlue"
+                                        UnselectedLabelColor="Gray"                                        
+                                        Label="Hydration">
+                    </tabs:MaterialUnderlinedTabItem>
+
+                </tabs:TabHostView>
+
+                <tabs:ViewSwitcher Grid.Row="1"
+                       Margin="16,0"
+                       VerticalOptions="Center"
+                       Animate="False"
+                       SelectedIndex="{Binding Source={x:Reference TabHostBadge}, Path=SelectedIndex, Mode=OneWay}">
+                    <StackLayout Orientation="Vertical" Spacing="10"    Padding="5" >
+
+                        <Label  Style="{StaticResource LabelDescription}" Margin="10" FontSize="Body" >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="0 out of 4 friend passes are in use for " />
+                                  
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Frame BackgroundColor="Green">
+                            <Grid HeightRequest="120">
+
+                                <Image Source="usermember.png"    Aspect="AspectFit"/>
+
+                                <StackLayout Orientation="Vertical" Spacing="20">
+                                    <Label Text="1/4" TextColor="White" FontSize="Body" />
+                                   
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                        
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Spacing="10"    Padding="5" >
+
+                        <Label  Style="{StaticResource LabelDescription}" Margin="10" FontSize="Body" >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="0 out of 4 friend passes are in use for " />
+
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Frame BackgroundColor="red">
+                            <Grid HeightRequest="120">
+
+                                <Image Source="usermember.png"    Aspect="AspectFit"/>
+
+                                <StackLayout Orientation="Vertical" Spacing="20">
+                                    <Label Text="1/4" TextColor="White" FontSize="Body" />
+
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Spacing="10"    Padding="5" >
+
+                        <Label  Style="{StaticResource LabelDescription}" Margin="10" FontSize="Body" >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="0 out of 4 friend passes are in use for " />
+
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Frame BackgroundColor="Yellow">
+                            <Grid HeightRequest="120">
+
+                                <Image Source="usermember.png"    Aspect="AspectFit"/>
+
+                                <StackLayout Orientation="Vertical" Spacing="20">
+                                    <Label Text="1/4" TextColor="White" FontSize="Body" />
+
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Spacing="10"    Padding="5" >
+
+                        <Label  Style="{StaticResource LabelDescription}" Margin="10" FontSize="Body" >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="0 out of 4 friend passes are in use for " />
+
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Frame BackgroundColor="Green">
+                            <Grid HeightRequest="120">
+
+                                <Image Source="usermember.png"    Aspect="AspectFit"/>
+
+                                <StackLayout Orientation="Vertical" Spacing="20">
+                                    <Label Text="1/4" TextColor="White" FontSize="Body" />
+
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+
+                    </StackLayout>
+                </tabs:ViewSwitcher>
+
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
