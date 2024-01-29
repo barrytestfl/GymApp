@@ -7,6 +7,7 @@
              xmlns:viewModels="clr-namespace:GymApp.ViewModels.Accounts"
              x:DataType="viewModels:ProfileViewModel"
              BackgroundColor="WhiteSmoke"
+            Shell.TabBarIsVisible="False"
              Title="Profile">
     <ScrollView>
         <VerticalStackLayout Spacing="10" Padding="15">

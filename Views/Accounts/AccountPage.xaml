@@ -7,6 +7,7 @@
              xmlns:viewModels="clr-namespace:GymApp.ViewModels.Accounts"
              x:DataType="viewModels:AccountViewModel"
              BackgroundColor="WhiteSmoke"
+             Shell.TabBarIsVisible="False"
              Title="Account">
     <VerticalStackLayout Spacing="5">
         

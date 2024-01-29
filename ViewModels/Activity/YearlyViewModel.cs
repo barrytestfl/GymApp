@@ -36,8 +36,7 @@ namespace GymApp.ViewModels.Activity
 
                 GymClasses.Add(new GymClass() { Location = "Th", SpotLeft = 1, Title = "Test 1", UserId = 1, StartTime = new DateTime(2024, 1, 1), TotalTime = 45 });
                 GymClasses.Add(new GymClass() { Location = "Lon", SpotLeft = 1, Title = "Test 1", UserId = 1, StartTime = new DateTime(2024, 2, 1), TotalTime = 35 });
-                GymClasses.Add(new GymClass() { Location = "Gty", SpotLeft = 1, Title = "Test 1", UserId = 1, StartTime = new DateTime(2020, 3, 1), TotalTime = 24 });
-                GymClasses.Add(new GymClass() { Location = "Bobs", SpotLeft = 1, Title = "Test 1", UserId = 1, StartTime = new DateTime(2024, 12, 1), TotalTime = 41 });
+                GymClasses.Add(new GymClass() { Location = "Gty", SpotLeft = 1, Title = "Test 1", UserId = 1, StartTime = new DateTime(2024, 3, 1), TotalTime = 24 }); 
 
              
         }

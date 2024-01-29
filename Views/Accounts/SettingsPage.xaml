@@ -6,6 +6,7 @@
              xmlns:viewModels="clr-namespace:GymApp.ViewModels.Accounts"
              x:DataType="viewModels:SettingsViewModel"
              x:Class="GymApp.Views.Accounts.SettingsPage"
+             Shell.TabBarIsVisible="False"
              Title="Settings">
     <VerticalStackLayout>
         <Label 

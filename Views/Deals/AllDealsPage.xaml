@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             xmlns:tabs="http://sharpnado.com"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
              xmlns:viewModels="clr-namespace:GymApp.ViewModels.Deals"
              x:DataType="viewModels:AllDealsViewModel" 
              xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
@@ -10,160 +10,131 @@
              BackgroundColor="White"
              x:Class="GymApp.Views.Deals.AllDealsPage"
              Title="Deals">
-    <ContentPage.Resources>
-        <ResourceDictionary>
+     
+    <Grid  >
+        <dxco:TabView 
+HeaderPanelBackgroundColor="WhiteSmoke"
+HeaderPanelShadowHeight="2"
+HeaderPanelShadowRadius="2"
+HeaderPanelShadowColor="#cc222222"
+IsHeaderPanelShadowVisible="true"
+HeaderPanelHeight="60"
+HeaderPanelPosition="Top"
+HeaderPanelItemSpacing="0"
+HeaderPanelIndent="1"
+HeaderPanelContentAlignment="Center"
+ItemHeaderWidth="*"
+ItemHeaderMinWidth="78"
+ItemHeaderMaxWidth="360"
+ItemHeaderVisibleElements="TextAndIcon"
+ItemHeaderPadding="12,0,12,0"
+ItemHeaderFontSize="12"
+ItemHeaderFontAttributes="Bold" 
+ItemHeaderIconSpacing="2"
+ItemHeaderIconPosition="Top"
+ItemHeaderTextColor="#99191919"
+ItemHeaderIconColor="#99191919"
+SelectedItemHeaderTextColor="{StaticResource Primary}"
+SelectedItemHeaderIconColor="{StaticResource Primary}"
+SelectedItemHeaderBackgroundColor="Transparent"
+SelectedItemIndicatorColor="{StaticResource Tertiary}"
+IsSelectedItemIndicatorVisible="true"
+SelectedItemIndicatorHeight="2"  
+   >
+            <dxco:TabViewItem HeaderText="all deals"     >
+                <dxco:TabViewItem.Content>
+                    <StackLayout Orientation="Vertical" Spacing="10"    Padding="5" >
+                        <CollectionView ItemsSource="{Binding  Category}"      ItemsLayout="HorizontalList" >
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate >
+                                    <Frame Margin="2" HeightRequest="70"  WidthRequest="100" >
 
-            <Style x:Key="MaterialTabStyle" TargetType="tabs:MaterialUnderlinedTabItem">
-                <Setter Property="SelectedTabColor" Value="{StaticResource Primary}" />
-                <Setter Property="SelectedTabColor" Value="{StaticResource Secondary}" />
-                <Setter Property="IconSize" Value="24" />
-                <Setter Property="FontFamily" Value="OpenSansRegular" />
-                <Setter Property="LabelSize" Value="14" />
-                <Setter Property="UnderlineAllTab" Value="True" />
-                <Setter Property="UnselectedLabelColor" Value="{StaticResource Gray200}" />
-            </Style>
-
-            <Style x:Key="BottomTabStyle"
-              BasedOn="{StaticResource MaterialTabStyle}"
-              TargetType="tabs:MaterialUnderlinedTabItem">
-                <Setter Property="LabelSize" Value="12" />
-            </Style>
-
-            <Style x:Key="LabelHeader" TargetType="Label">
-                <Setter Property="FontFamily" Value="OpenSansExtraBold" />
-                <Setter Property="FontSize" Value="14" />
-                <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="Margin" Value="16,0" />
-            </Style>
-
-            <Style x:Key="LabelDescription" TargetType="Label">
-                <Setter Property="FontFamily" Value="OpenSansRegular" />
-                <Setter Property="FontSize" Value="14" />
-                <Setter Property="VerticalOptions" Value="Center" />
-            </Style>
-
-            <Style x:Key="Card" TargetType="Border">
-                <Setter Property="Padding" Value="0" />
-                <Setter Property="Stroke" Value="{StaticResource Gray975}" />
-                <Setter Property="StrokeShape" Value="RoundRectangle 20" />
-                <Setter Property="StrokeThickness" Value="2" />
-            </Style>
-
-        </ResourceDictionary>
-    </ContentPage.Resources>
-    <Grid  RowDefinitions="50,*">
-      
-        <tabs:TabHostView x:Name="TabHostBadge"
-            Grid.Row="0"
-            Margin="0"
-            BackgroundColor="Grey"
-            >
-            <tabs:MaterialUnderlinedTabItem Style="{StaticResource MaterialTabStyle}"
-                             IsSelected="True"                                
-                              SelectedTabColor="DarkSlateBlue"
-                              UnselectedLabelColor="Gray"
-                              Label="all deals">
-            </tabs:MaterialUnderlinedTabItem>
-            <tabs:MaterialUnderlinedTabItem Style="{StaticResource MaterialTabStyle}" 
-                              SelectedTabColor="DarkSlateBlue"
-                              UnselectedLabelColor="Gray"                                        
-                              Label="saved deals">
-            </tabs:MaterialUnderlinedTabItem>
-        </tabs:TabHostView>
-        <tabs:ViewSwitcher 
-             Grid.Row="1"
-             Margin="0"                
-             Animate="False"
-             BackgroundColor="WhiteSmoke"
-             SelectedIndex="{Binding Source={x:Reference TabHostBadge}, Path=SelectedIndex, Mode=OneWay}">
-            <StackLayout Orientation="Vertical" Spacing="10"    Padding="5" >
-                <CollectionView ItemsSource="{Binding  Category}"      ItemsLayout="HorizontalList" >
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate >
-                            <Frame Margin="2" HeightRequest="70"  WidthRequest="100" >
-
-                                <Label VerticalOptions="Center" HorizontalTextAlignment="Center" Text="{Binding .}" />
+                                        <Label VerticalOptions="Center" HorizontalTextAlignment="Center" Text="{Binding .}" />
 
 
 
-                            </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
 
-                <dxcv:DXCollectionView 
-              Grid.Row="1"     
-              SelectionMode="None"
-              ItemsSource="{Binding AllDeals}" 
-              AllowLiveDataShaping="True"
-              HorizontalOptions="FillAndExpand"
-              VerticalOptions="FillAndExpand"      
-              AllowGroupCollapse="False"
-              >
-                    <dxcv:DXCollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:DealsModel">
-                            <Border Padding="10"  Margin="10,2" >
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="5"/>
-                                </Border.StrokeShape>
-                                <Border.Shadow>
-                                    <Shadow 
-                          Brush="Black"
-                          Offset="10,10"
-                          Opacity="0.8" />
-                                </Border.Shadow>
-                                <VerticalStackLayout  >
-                                    <Grid >
-                                        <Image Source="usermember.png"    Aspect="AspectFit"/>
-                                        <StackLayout Orientation="Vertical"   Spacing="7" VerticalOptions="StartAndExpand">
+                        <dxcv:DXCollectionView 
+   Grid.Row="1"     
+   SelectionMode="None"
+   ItemsSource="{Binding AllDeals}" 
+   AllowLiveDataShaping="True"
+   HorizontalOptions="FillAndExpand"
+   VerticalOptions="FillAndExpand"      
+   AllowGroupCollapse="False"
+   >
+                            <dxcv:DXCollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:DealsModel">
+                                    <Border Padding="10"  Margin="10,2" >
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="5"/>
+                                        </Border.StrokeShape>
+                                        <Border.Shadow>
+                                            <Shadow 
+               Brush="Black"
+               Offset="10,10"
+               Opacity="0.8" />
+                                        </Border.Shadow>
+                                        <VerticalStackLayout  >
+                                            <Grid >
+                                                <Image Source="sports.png"    Aspect="AspectFit"/>
+                                                <StackLayout Orientation="Vertical"   Spacing="7" VerticalOptions="StartAndExpand">
 
-                                            <Label LineBreakMode="WordWrap">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="Unlimited " />
-                                                        <Span Text="{Binding From,StringFormat='{0:yyyy/MM/dd} - '}" />
-                                                        <Span Text="{Binding End,StringFormat='{0:yyyy/MM/dd} '}"  />
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
+                                                    <Label LineBreakMode="WordWrap">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="Unlimited " />
+                                                                <Span Text="{Binding From,StringFormat='{0:yyyy/MM/dd} - '}" />
+                                                                <Span Text="{Binding End,StringFormat='{0:yyyy/MM/dd} '}"  />
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
 
-                                            <Label    
-                              Text="{Binding Name}"
-                              FontAttributes="Bold"
-                              FontSize="18"
-                              LineBreakMode="WordWrap"
-                              VerticalOptions="Center"
-                              HorizontalTextAlignment="Center"
-                              HorizontalOptions="Start" 
-                              
-                             />
-                                            <Label    
-                              Text="{Binding CategoryName}"
-                              FontAttributes="Bold"
-                              FontSize="16"
-                              LineBreakMode="WordWrap"
-                              VerticalOptions="Center"
-                              HorizontalTextAlignment="Center"
-                              HorizontalOptions="Start" 
-                              
-                             />
-                                        </StackLayout>
-                                        </Grid>
-                                </VerticalStackLayout>
-                            </Border>
-                        </DataTemplate>
-                    </dxcv:DXCollectionView.ItemTemplate>
-                    <!--Specify margins.-->
-                    <dxcv:DXCollectionView.Margin>
-                        <x:OnIdiom Phone="1,0,0,0" Tablet="71,0,0,0"/>
-                    </dxcv:DXCollectionView.Margin>
- 
- 
+                                                    <Label    
+                   Text="{Binding Name}"
+                   FontAttributes="Bold"
+                   FontSize="18"
+                   LineBreakMode="WordWrap"
+                   VerticalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="Start" 
+                   
+                  />
+                                                    <Label    
+                   Text="{Binding CategoryName}"
+                   FontAttributes="Bold"
+                   FontSize="16"
+                   LineBreakMode="WordWrap"
+                   VerticalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="Start" 
+                   
+                  />
+                                                </StackLayout>
+                                            </Grid>
+                                        </VerticalStackLayout>
+                                    </Border>
+                                </DataTemplate>
+                            </dxcv:DXCollectionView.ItemTemplate>
+                            <!--Specify margins.-->
+                            <dxcv:DXCollectionView.Margin>
+                                <x:OnIdiom Phone="1,0,0,0" Tablet="71,0,0,0"/>
+                            </dxcv:DXCollectionView.Margin>
 
-                </dxcv:DXCollectionView> 
-            </StackLayout>
-            <StackLayout Orientation="Vertical" Spacing="10"    Padding="5" >
-                <dxcv:DXCollectionView 
+
+
+                        </dxcv:DXCollectionView>
+                    </StackLayout>
+                </dxco:TabViewItem.Content>
+            </dxco:TabViewItem>
+            <dxco:TabViewItem HeaderText="saved deals"     >
+                <dxco:TabViewItem.Content>
+                    <StackLayout Orientation="Vertical" Spacing="10"    Padding="5" >
+                        <dxcv:DXCollectionView 
                     Grid.Row="1"     
                     SelectionMode="None"
                     ItemsSource="{Binding SavedDeals}" 
@@ -172,34 +143,34 @@
                     VerticalOptions="FillAndExpand"      
                     AllowGroupCollapse="False"
 >
-                    <dxcv:DXCollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:DealsModel">
-                            <Border Padding="10"  Margin="10,2" >
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="5"/>
-                                </Border.StrokeShape>
-                                <Border.Shadow>
-                                    <Shadow 
+                            <dxcv:DXCollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:DealsModel">
+                                    <Border Padding="10"  Margin="10,2" >
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="5"/>
+                                        </Border.StrokeShape>
+                                        <Border.Shadow>
+                                            <Shadow 
             Brush="Black"
             Offset="10,10"
             Opacity="0.8" />
-                                </Border.Shadow>
-                                <VerticalStackLayout  >
-                                    <Grid >
-                                        <Image Source="usermember.png"    Aspect="AspectFit"/>
-                                        <StackLayout Orientation="Vertical"   Spacing="7" VerticalOptions="StartAndExpand">
+                                        </Border.Shadow>
+                                        <VerticalStackLayout  >
+                                            <Grid >
+                                                <Image Source="sports.png"    Aspect="AspectFit"/>
+                                                <StackLayout Orientation="Vertical"   Spacing="7" VerticalOptions="StartAndExpand">
 
-                                            <Label LineBreakMode="WordWrap">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="Unlimited " />
-                                                        <Span Text="{Binding From,StringFormat='{0:yyyy/MM/dd} - '}" />
-                                                        <Span Text="{Binding End,StringFormat='{0:yyyy/MM/dd} '}"  />
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
+                                                    <Label LineBreakMode="WordWrap">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="Unlimited " />
+                                                                <Span Text="{Binding From,StringFormat='{0:yyyy/MM/dd} - '}" />
+                                                                <Span Text="{Binding End,StringFormat='{0:yyyy/MM/dd} '}"  />
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
 
-                                            <Label    
+                                                    <Label    
                 Text="{Binding Name}"
                 FontAttributes="Bold"
                 FontSize="18"
@@ -209,7 +180,7 @@
                 HorizontalOptions="Start" 
                 
                />
-                                            <Label    
+                                                    <Label    
                 Text="{Binding CategoryName}"
                 FontAttributes="Bold"
                 FontSize="16"
@@ -219,23 +190,30 @@
                 HorizontalOptions="Start" 
                 
                />
-                                        </StackLayout>
-                                    </Grid>
-                                </VerticalStackLayout>
-                            </Border>
-                        </DataTemplate>
-                    </dxcv:DXCollectionView.ItemTemplate>
-                    <!--Specify margins.-->
-                    <dxcv:DXCollectionView.Margin>
-                        <x:OnIdiom Phone="1,0,0,0" Tablet="71,0,0,0"/>
-                    </dxcv:DXCollectionView.Margin>
+                                                </StackLayout>
+                                            </Grid>
+                                        </VerticalStackLayout>
+                                    </Border>
+                                </DataTemplate>
+                            </dxcv:DXCollectionView.ItemTemplate>
+                            <!--Specify margins.-->
+                            <dxcv:DXCollectionView.Margin>
+                                <x:OnIdiom Phone="1,0,0,0" Tablet="71,0,0,0"/>
+                            </dxcv:DXCollectionView.Margin>
 
 
 
-                </dxcv:DXCollectionView>
+                        </dxcv:DXCollectionView>
 
-            </StackLayout>
+                    </StackLayout>
 
-        </tabs:ViewSwitcher>
-    </Grid>
+                </dxco:TabViewItem.Content>
+            </dxco:TabViewItem>
+
+
+        </dxco:TabView>
+
+
+    </Grid>  
+     
 </ContentPage>

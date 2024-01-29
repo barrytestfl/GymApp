@@ -6,7 +6,9 @@
              x:DataType="viewModels:SetGoalViewModel"
              BackgroundColor="WhiteSmoke"
              x:Class="GymApp.Views.Goals.SetGoalPage"
-             Title="Set Goal ">
+             Title="Set Goal "
+             Shell.TabBarIsVisible="False"
+             >
     
 
         <Grid RowDefinitions="90,*,70,*,70">
@@ -16,7 +18,7 @@
                         <toolkit:IconTintColorBehavior TintColor="{StaticResource Blue100Accent}" />
                     </Image.Behaviors>
                 </Image>
-                <Label Text="Explore more"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="18" TextColor="White" Padding="15,0"/>
+                <Label Text="number of workout"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="18" TextColor="White" Padding="15,0"/>
 
             </Grid>
             <StackLayout Orientation="Vertical" Grid.Row="1" Padding="5" Spacing="1">
@@ -26,7 +28,7 @@
                     <DataTemplate >
                         <Frame Margin="2" HeightRequest="70"  WidthRequest="100" >
 
-                            <Label VerticalOptions="Center" HorizontalTextAlignment="Center" Text="{Binding .}" />
+                            <Label VerticalOptions="Center" TextColor="Black" HorizontalTextAlignment="Center" Text="{Binding .}" />
 
 
 
@@ -38,8 +40,8 @@
             <Label Text="workouts per week"   FontSize="12"   HorizontalTextAlignment="Center"/>
           
             </StackLayout>
-        <StackLayout Grid.Row="2"  Orientation="Vertical"  Padding="15">
-            <Entry Placeholder="Set Name"/>
+        <StackLayout Grid.Row="2"  Orientation="Vertical"   Padding="15">
+            <Entry Placeholder="Set Name"  />
         </StackLayout>
             <StackLayout Orientation="Vertical" Grid.Row="3" Padding="5">
                 <Label Text="set total duration" TextColor="Blue" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
@@ -48,7 +50,7 @@
                     <DataTemplate >
                         <Frame Margin="2" HeightRequest="70"  WidthRequest="100" >
                             
-                                <Label VerticalOptions="Center" HorizontalTextAlignment="Center" Text="{Binding .}" />
+                                <Label VerticalOptions="Center" TextColor="Black" HorizontalTextAlignment="Center" Text="{Binding .}" />
                                
                             
                           

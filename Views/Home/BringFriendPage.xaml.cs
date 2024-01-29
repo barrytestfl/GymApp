@@ -12,7 +12,7 @@ public partial class BringFriendPage : ContentPage
 		InitializeComponent();
 		this.viewModel = viewModel;
 		BindingContext = viewModel;
-        TabHostBadge.SelectedIndex = 0;
+       
         
 
     }
